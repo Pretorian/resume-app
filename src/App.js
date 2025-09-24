@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Briefcase, Award, GraduationCap, Target, Star, Phone, Calendar, MapPin, Mail, ChevronDown, ChevronRight, Trophy } from 'lucide-react';
+import { User, Briefcase, Award, GraduationCap, Target, Star, Phone, Calendar, MapPin, Mail, ChevronDown, ChevronRight, Trophy, Settings, Shield, Cpu, Users, Workflow } from 'lucide-react';
 
 // Experience data - structured for analytics and easy maintenance
 const experienceData = {
@@ -259,8 +259,8 @@ const MinimalistResume = () => {
         {
           title: "Operational Excellence",
           level: 88,
-          skills: ["CI/CD", "Terraform", "Jenkins", "GitHub Actions", "Monitoring", "SLO/SLI"],
-          description: "Automation, monitoring, and reliability engineering for enterprise-scale applications."
+          skills: ["CI/CD", "Terraform", "Jenkins", "GitHub Actions", "Monitoring", "SDLC/ARB"],
+          description: "Automation, monitoring, and reliability engineering for enterprise-scale applications, deployment of services at scale."
         },
         {
           title: "Security & Compliance",
@@ -320,6 +320,82 @@ const MinimalistResume = () => {
     { id: 'certifications', label: 'Certifications', icon: Award }
   ];
 
+  // Helper function to get category icon and styling
+  const getCategoryDisplay = (category) => {
+    switch(category) {
+      case 'leadership':
+        return { 
+          icon: Users, 
+          style: 'border-2 border-black bg-black text-white',
+          pattern: '👥'
+        };
+      case 'technical':
+        return { 
+          icon: Cpu, 
+          style: 'border-2 font-bold',
+          bgColor: '#A0D2EB',
+          borderColor: '#4A4C5F',
+          textColor: '#4A4C5F',
+          pattern: '⚙️'
+        };
+      case 'security':
+        return { 
+          icon: Shield, 
+          style: 'border-2 text-white font-bold',
+          bgColor: '#4A4C5F',
+          borderColor: '#4A4C5F',
+          pattern: '🔒'
+        };
+      case 'operations':
+        return { 
+          icon: Settings, 
+          style: 'border-2 border-black bg-gray-600 text-white',
+          pattern: '📊'
+        };
+      case 'collaboration':
+        return { 
+          icon: Workflow, 
+          style: 'border-2 border-black bg-gray-400 text-black',
+          pattern: '🤝'
+        };
+      default:
+        return { 
+          icon: Star, 
+          style: 'border-2 border-black bg-white text-black',
+          pattern: '⭐'
+        };
+    }
+  };
+
+  // Helper function to get impact level styling
+  const getImpactDisplay = (impact) => {
+    switch(impact) {
+      case 'high':
+        return {
+          style: 'border-2 border-black bg-white text-black font-bold',
+          label: 'HIGH IMPACT',
+          pattern: '▲'
+        };
+      case 'medium':
+        return {
+          style: 'border-2 border-black bg-gray-200 text-black',
+          label: 'MEDIUM IMPACT',
+          pattern: '◆'
+        };
+      case 'low':
+        return {
+          style: 'border-2 border-black bg-gray-100 text-gray-700',
+          label: 'LOW IMPACT', 
+          pattern: '▼'
+        };
+      default:
+        return {
+          style: 'border-2 border-black bg-white text-black',
+          label: 'IMPACT',
+          pattern: '◯'
+        };
+    }
+  };
   // Helper functions for experience data analytics
   const getTopRankedAchievements = (limit = 4) => {
     const allAchievements = [];
@@ -393,10 +469,10 @@ const MinimalistResume = () => {
 
       <div id="stats-grid" className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
         {resumeData.overview.stats.map((stat, index) => (
-          <div key={index} id={`stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`} className="text-center border-2 border-black p-3 sm:p-6">
+          <div key={index} id={`stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`} className="text-center border-2 border-black bg-white p-3 sm:p-6 shadow-md hover:shadow-lg transition-shadow">
             <stat.icon className="w-6 sm:w-8 h-6 sm:h-8 text-black mx-auto mb-2 sm:mb-3" />
             <div className="text-2xl sm:text-3xl font-bold text-black mb-1 sm:mb-2">{stat.value}</div>
-            <div className="text-xs sm:text-sm text-gray-800 font-medium leading-tight">{stat.label}</div>
+            <div className="text-xs sm:text-sm text-black font-medium leading-tight">{stat.label}</div>
           </div>
         ))}
       </div>
@@ -408,9 +484,9 @@ const MinimalistResume = () => {
         </h2>
         <div id="achievements-list" className="space-y-3">
           {getTopRankedAchievements().map((achievement, index) => (
-            <div key={achievement.id} id={`achievement-${achievement.id}`} className="flex items-start space-x-3 p-3 sm:p-4 border border-gray-300">
+            <div key={achievement.id} id={`achievement-${achievement.id}`} className="flex items-start space-x-3 p-3 sm:p-4 border-2 border-black bg-white shadow-sm">
               <div className="flex items-center space-x-2 flex-shrink-0">
-                <span className="w-6 sm:w-8 h-6 sm:h-8 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">
+                <span className="w-6 sm:w-8 h-6 sm:h-8 bg-black text-white rounded-full flex items-center justify-center text-xs sm:text-sm font-bold border-2 border-black">
                   {index + 1}
                 </span>
                 <Star className="w-4 sm:w-5 h-4 sm:h-5 text-black flex-shrink-0" />
@@ -418,18 +494,15 @@ const MinimalistResume = () => {
               <div className="flex-1 min-w-0">
                 <span className="text-gray-800 text-sm sm:text-base leading-relaxed">{achievement.description}</span>
                 <div className="flex flex-wrap gap-1 sm:gap-2 mt-2">
-                  <span className="text-xs px-2 py-1 border border-gray-400 bg-gray-100 text-gray-800">
-                    {achievement.company}
+                  <span className="text-xs px-2 py-1 border-2 border-black bg-gray-200 text-black font-medium">
+                    🏢 {achievement.company}
                   </span>
-                  <span className={`text-xs px-2 py-1 border ${
-                    achievement.impact === 'high' ? 'border-black bg-white text-black' :
-                    achievement.impact === 'medium' ? 'border-gray-400 bg-white text-gray-600' :
-                    'border-gray-300 bg-gray-50 text-gray-500'
-                  }`}>
-                    {achievement.impact} impact
+                  <span className={`text-xs px-2 py-1 flex items-center space-x-1 ${getImpactDisplay(achievement.impact).style}`}>
+                    <span>{getImpactDisplay(achievement.impact).pattern}</span>
+                    <span>{getImpactDisplay(achievement.impact).label}</span>
                   </span>
                   {achievement.metrics && (
-                    <span className="text-xs px-2 py-1 border border-gray-300 bg-gray-50 text-gray-600">
+                    <span className="text-xs px-2 py-1 border-2 border-black bg-yellow-50 text-black">
                       📊 {achievement.metrics}
                     </span>
                   )}
@@ -460,18 +533,23 @@ const MinimalistResume = () => {
               </div>
             </div>
             
-            <div className="w-full bg-gray-200 border border-gray-400 h-3 sm:h-4 mb-4 sm:mb-6">
+            <div className="w-full bg-gray-200 border-2 border-black h-3 sm:h-4 mb-4 sm:mb-6">
               <div 
-                className="bg-black h-full transition-all duration-1000"
+                className="bg-black h-full transition-all duration-1000 relative"
                 style={{ width: `${category.level}%` }}
-              ></div>
+              >
+                <div className="absolute inset-0 bg-black opacity-90"></div>
+                <div className="absolute right-1 top-0 bottom-0 flex items-center">
+                  <span className="text-white text-xs font-bold">{category.level}%</span>
+                </div>
+              </div>
             </div>
 
             <p className="text-gray-800 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">{category.description}</p>
 
             <div id={`skills-${category.title.toLowerCase().replace(/[&\s]+/g, '-')}`} className="flex flex-wrap gap-1 sm:gap-2">
               {category.skills.map((skill, skillIndex) => (
-                <span key={skillIndex} className="border border-black bg-white text-black px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium">
+                <span key={skillIndex} className="border-2 border-black bg-white text-black px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium shadow-sm hover:shadow-md transition-shadow">
                   {skill}
                 </span>
               ))}
@@ -561,30 +639,22 @@ const MinimalistResume = () => {
                           const originalAchievement = role.id ? experienceData[role.id]?.achievements[achIndex] : null;
                           
                           return (
-                            <div key={achIndex} id={`achievement-${role.id || index}-${achIndex}`} className="flex items-start space-x-3 p-3 bg-white border border-gray-300 rounded">
+                            <div key={achIndex} id={`achievement-${role.id || index}-${achIndex}`} className="flex items-start space-x-3 p-3 bg-white border-2 border-black rounded shadow-sm">
                               <Star className="w-4 h-4 text-black flex-shrink-0 mt-1" />
                               <div className="flex-1 min-w-0">
-                                <span className="text-gray-800 text-sm sm:text-base leading-relaxed block">{achievement}</span>
+                                <span className="text-black text-sm sm:text-base leading-relaxed block font-medium">{achievement}</span>
                                 {originalAchievement && (
                                   <div className="flex flex-wrap gap-1 sm:gap-2 mt-2">
-                                    <span className={`text-xs px-2 py-1 border ${
-                                      originalAchievement.category === 'leadership' ? 'border-black bg-black text-white' :
-                                      originalAchievement.category === 'technical' ? 'border-gray-400 bg-gray-100 text-gray-800' :
-                                      originalAchievement.category === 'security' ? 'border-gray-600 bg-gray-200 text-gray-800' :
-                                      originalAchievement.category === 'operations' ? 'border-gray-500 bg-gray-150 text-gray-800' :
-                                      'border-gray-300 bg-gray-50 text-gray-700'
-                                    }`}>
-                                      {originalAchievement.category}
+                                    <span className={`text-xs px-2 py-1 flex items-center space-x-1 ${getCategoryDisplay(originalAchievement.category).style}`}>
+                                      <span>{getCategoryDisplay(originalAchievement.category).pattern}</span>
+                                      <span className="uppercase font-medium">{originalAchievement.category}</span>
                                     </span>
-                                    <span className={`text-xs px-2 py-1 border ${
-                                      originalAchievement.impact === 'high' ? 'border-black bg-white text-black' :
-                                      originalAchievement.impact === 'medium' ? 'border-gray-400 bg-white text-gray-600' :
-                                      'border-gray-300 bg-gray-50 text-gray-500'
-                                    }`}>
-                                      {originalAchievement.impact} impact
+                                    <span className={`text-xs px-2 py-1 flex items-center space-x-1 ${getImpactDisplay(originalAchievement.impact).style}`}>
+                                      <span>{getImpactDisplay(originalAchievement.impact).pattern}</span>
+                                      <span>{getImpactDisplay(originalAchievement.impact).label}</span>
                                     </span>
                                     {originalAchievement.metrics && (
-                                      <span className="text-xs px-2 py-1 border border-gray-300 bg-gray-50 text-gray-600 break-words">
+                                      <span className="text-xs px-2 py-1 border-2 border-black bg-yellow-50 text-black break-words">
                                         📊 {originalAchievement.metrics}
                                       </span>
                                     )}
@@ -604,11 +674,11 @@ const MinimalistResume = () => {
         </div>
 
         {/* Enhanced Data insights section */}
-        <div id="experience-analytics" className="border border-gray-400 p-3 sm:p-4 bg-gray-50 text-center">
-          <p className="text-xs text-gray-700 mb-2">
-            <strong>Enhanced Structured Data:</strong> This experience data now includes rankings and sliding drawer interface
+        <div id="experience-analytics" className="border-2 border-black p-3 sm:p-4 bg-gray-50 text-center">
+          <p className="text-xs text-black mb-2 font-medium">
+            <strong>Enhanced Structured Data:</strong> This experience data includes rankings, sliding drawer interface, and protanopia-friendly visual design
           </p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs text-gray-600">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs text-black font-medium">
             <span>🎯 {getHighImpactAchievements().length} High-Impact Items</span>
             <span>👥 {getAchievementsByCategory('leadership').length} Leadership</span>
             <span>🔧 {getAchievementsByCategory('technical').length} Technical</span>
@@ -675,12 +745,13 @@ const MinimalistResume = () => {
               </div>
               <div className="text-left sm:text-right flex-shrink-0">
                 <div className="text-sm font-bold text-black mb-1">{cert.date}</div>
-                <span className={`inline-block px-2 sm:px-3 py-1 text-xs font-bold border ${
+                <span className={`inline-flex items-center space-x-1 px-2 sm:px-3 py-1 text-xs font-bold border-2 ${
                   cert.status === 'Active' 
                     ? 'border-black bg-black text-white' 
-                    : 'border-gray-400 bg-gray-200 text-gray-800'
+                    : 'border-black bg-gray-300 text-black'
                 }`}>
-                  {cert.status}
+                  <span>{cert.status === 'Active' ? '✓' : '○'}</span>
+                  <span>{cert.status.toUpperCase()}</span>
                 </span>
               </div>
             </div>
@@ -725,8 +796,8 @@ const MinimalistResume = () => {
                 onClick={() => setActiveSection(item.id)}
                 className={`flex items-center space-x-1 sm:space-x-2 px-2 sm:px-4 py-2 sm:py-2 border-2 text-xs sm:text-sm font-bold transition-colors min-h-[44px] ${
                   activeSection === item.id
-                    ? 'border-black bg-black text-white'
-                    : 'border-gray-400 bg-white text-black hover:border-black'
+                    ? 'border-black bg-black text-white shadow-lg'
+                    : 'border-black bg-white text-black hover:bg-gray-100 hover:shadow-md'
                 }`}
               >
                 <item.icon className="w-4 h-4 flex-shrink-0" />

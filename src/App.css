@@ -1,0 +1,59 @@
+.App {
+  text-align: left;
+}
+
+/* Custom animations */
+@keyframes slide-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: slide-in-from-top 0.3s ease-out;
+}
+
+.slide-in-from-top {
+  animation-fill-mode: both;
+}
+
+/* Ensure high contrast for accessibility */
+*:focus {
+  outline: 2px solid #000 !important;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for better visual consistency */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

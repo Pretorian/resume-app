@@ -1,70 +1,13 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Hello**
+---------
+I'm an Engineering Leader and Technologist with over 12 years building software and 5+ years managing engineering teams. 
+Throughout my career, I've built large-scale backend systems and data infrastructure while focusing on good development practices and helping senior engineers grow in their roles. 
+I enjoy defining technical roadmaps, scaling cloud platforms, and implementing new technologies that solve real problems. 
+I'm passionate about creating inclusive teams where everyone can do their best work. 
+What drives me is building systems that are reliable, secure, and make a measurable difference, while maintaining the efficiency and uptime that users depend on.
+**Areas of Expertise**
+****Leadership & Mentorship:**** 10+ years leading and growing cross-functional teams; enabling senior Engineers to drive initiatives across platforms.
+****Backend & Infrastructure:**** Expertise in AWS (ECS, SNS/SQS, Lambda, Aurora), Node.js, Python, Java (Spring), API portals like Apigee, CMS solutions like Drupal and its API catalogs and media/data pipelines.
+****Operational Excellence:**** CI/CD automation (Terraform, Jenkins, GitHub Actions), monitoring (AppDynamics, Argo CD, Zenoss), SLO/SLI management, blameless postmortems.
+****Collaboration & Communication:**** Strong cross-functional alignment with Product, Design, and Infrastructure; skilled in vision-setting and stakeholder communication using SAFe and agile frameworks.
+****Security & Compliance:**** SSO (Okta, Entra), OWASP/ZAP/DAST, Prisma Cloud, secure SDLC, compliance & governance.
